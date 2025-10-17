@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
+// Link Stripe donazioni
+const DONATE_URL = "https://donate.stripe.com/9B67sL3K3786aYc1YscMM00";
+
 export default function Site() {
   const [open, setOpen] = useState(false);
   const revealRefs = useRef([]);
@@ -29,7 +32,7 @@ export default function Site() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden pt-[env(safe-area-inset-top)]">
       <style>{`
         .to-reveal { opacity: 0; transform: translateY(24px) scale(.98); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.65,.2,1); }
         .reveal-in { opacity: 1; transform: translateY(0) scale(1); }
@@ -38,7 +41,14 @@ export default function Site() {
         .link-elegant:hover { color: #fff; }
         .link-elegant:hover::after { width: 100%; }
         @keyframes zoomCycle { 0% { transform: scale(0.85); opacity: 0; } 40% { transform: scale(1.12); opacity: 1; } 60% { transform: scale(1.22); opacity: 0; } 61% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(0.85); opacity: 0; } }
-        @keyframes pulseText { 0% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.3); } 50% { text-shadow: 0 0 30px rgba(168,85,247,0.8); color: rgba(168,85,247,0.8); } 100% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.3); } }
+        @keyframes pulseText { 0% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.34); } 50% { text-shadow: 0 0 34px rgba(168,85,247,0.9); color: rgba(168,85,247,0.9); } 100% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.34); } }
+        @keyframes zoomCycleMobile { 0% { transform: scale(0.92); opacity: 0; } 40% { transform: scale(1.06); opacity: 1; } 60% { transform: scale(1.12); opacity: 0; } 61% { transform: scale(0.92); opacity: 0; } 100% { transform: scale(0.92); opacity: 0; } }
+        .waack-zoom { animation: zoomCycle 14s ease-in-out infinite; }
+        .waack-text { filter: blur(9px); }
+        @media (max-width: 640px) {
+          .waack-zoom { animation: zoomCycleMobile 14s ease-in-out infinite; }
+          .waack-text { filter: blur(7px); }
+        }
       `}</style>
 
       <div className="pointer-events-none fixed inset-0 opacity-80" aria-hidden={true}>
@@ -54,6 +64,7 @@ export default function Site() {
           <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
             <a href="#projets" className="link-elegant">Projets</a>
             <a href="#contacts" className="link-elegant">Contacts</a>
+            <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-4 py-2 font-semibold text-white shadow hover:opacity-90">🌈 Soutenir</a>
           </nav>
         </div>
         {open && (
@@ -61,6 +72,7 @@ export default function Site() {
             <div className="px-4 py-3 grid gap-3 text-white/90">
               <a href="#projets" className="link-elegant">Projets</a>
               <a href="#contacts" className="link-elegant">Contacts</a>
+              <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-4 py-2 font-semibold text-white shadow hover:opacity-90">🌈 Soutenir</a>
             </div>
           </div>
         )}
@@ -78,12 +90,12 @@ export default function Site() {
 
       <section id="projets" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
         <h2 ref={addToReveal} className="to-reveal text-3xl sm:text-4xl font-bold tracking-tight text-white relative z-10">Projets</h2>
-        <div ref={addToReveal} className="to-reveal mt-8 rounded-2xl border border-white/10 bg-white/5 text-white p-6 sm:p-10 md:p-16 relative h-[65vh] flex flex-col justify-end overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center" style={{animation: "zoomCycle 14s ease-in-out infinite"}}>
+        <div ref={addToReveal} className="to-reveal mt-8 rounded-2xl border border-white/10 bg-white/5 text-white p-4 sm:p-10 md:p-16 relative h-[75vh] sm:h-[65vh] flex flex-col justify-end overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center waack-zoom">
             <h3
-              className="leading-none tracking-tight text-center text-transparent bg-clip-text blur-[9px] select-none whitespace-nowrap text-[15vw] sm:text-[13vw] md:text-[11vw] lg:text-[10vw]"
+              className="leading-none tracking-tight text-center text-transparent bg-clip-text waack-text select-none whitespace-nowrap text-[18vw] sm:text-[13vw] md:text-[11vw] lg:text-[10vw]"
               style={{
-                backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(233,163,255,0.25) 25%, rgba(255,255,255,0.08) 50%, rgba(233,163,255,0.3) 75%, rgba(255,255,255,0.1) 100%)",
+                backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(233,163,255,0.35) 25%, rgba(255,255,255,0.12) 50%, rgba(233,163,255,0.42) 75%, rgba(255,255,255,0.16) 100%)",
                 animation: "pulseText 0.8s ease-in-out infinite"
               }}
             >
@@ -108,6 +120,14 @@ export default function Site() {
               <p className="mt-2 text-xs text-white/50">Nous n’envoyons que des mises à jour sur l’événement. Pas de spam.</p>
             </form>
           </div>
+        </div>
+      </section>
+
+      <section id="donate" ref={addToReveal} className="to-reveal max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">Soutenir</h2>
+        <p className="mt-4 text-white/80 max-w-2xl">Soutenez les projets artistiques et culturels de GINO’S II — dédiés à la danse, à la création queer et aux échanges interculturels à Paris.</p>
+        <div className="mt-6">
+          <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-6 py-3 text-base font-semibold text-white shadow hover:opacity-90">🌈 Soutenir / Donate</a>
         </div>
       </section>
 
