@@ -55,7 +55,6 @@ export default function Site() {
           100% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.34); } 
         }
 
-        /* Mobile: zoom più contenuto per evitare tagli */
         @keyframes zoomCycleMobile { 
           0%   { transform: scale(0.94); opacity: 0; } 
           40%  { transform: scale(1.03); opacity: 1; } 
@@ -176,24 +175,34 @@ export default function Site() {
               événement : danse, arts visuels et médiation publique.
             </p>
 
-            <form className="mt-8 max-w-md" onSubmit={(e) => e.preventDefault()}>
-              <label htmlFor="nl" className="block text-sm text-white/80 mb-2">
-                Laissez votre email pour être informé·e·s :
+            {/* Form Buttondown – Newsletter */}
+            <form
+              action="https://buttondown.com/api/emails/embed-subscribe/GINOSII"
+              method="post"
+              target="popupwindow"
+              onSubmit={() => window.open('https://buttondown.com/GINOSII', 'popupwindow')}
+              className="embeddable-buttondown-form mt-8 max-w-md"
+            >
+              <label htmlFor="bd-email" className="block text-sm text-white/80 mb-2">
+                🌈 Laissez votre email pour être informé·e·s :
               </label>
               <div className="flex gap-2">
                 <input
-                  id="nl"
                   type="email"
+                  name="email"
+                  id="bd-email"
                   required
                   placeholder="votre@email"
-                  className="flex-1 rounded-xl bg-black/40 border border-white/15 px-3 py-2 text-sm outline-none focus:border-white/40"
+                  className="flex-1 rounded-xl bg-black/40 border border-white/15 px-3 py-2 text-sm text-white outline-none focus:border-white/40 placeholder-white/40"
                 />
-                <button className="rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold hover:bg-white/10">
-                  S’inscrire
-                </button>
+                <input
+                  type="submit"
+                  value="S’inscrire"
+                  className="rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow hover:opacity-90 cursor-pointer"
+                />
               </div>
               <p className="mt-2 text-xs text-white/50">
-                Nous n’envoyons que des mises à jour sur l’événement. Pas de spam.
+                Nous n’envoyons que des mises à jour sur les projets et événements queer de GINO’S II. Aucun spam 💜
               </p>
             </form>
           </div>
