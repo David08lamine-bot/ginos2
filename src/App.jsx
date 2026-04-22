@@ -130,10 +130,12 @@ export default function Site() {
         >
           <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight">GINO’S II</h1>
           <p className="mt-6 text-lg text-white/80 leading-relaxed">
-            L’association a pour objectif de promouvoir, soutenir et organiser des événements
-            culturels et artistiques ancrés dans les cultures queer et clubbing, en valorisant les
-            danses issues du mouvement punking/waacking ainsi que les formes d’expression nées des
-            communautés marginalisées.
+            GINO’S II est une association artistique et culturelle dédiée aux cultures queer, aux pratiques issues du clubbing et aux formes d’expression nées dans des contextes marginalisés, avec une attention particulière portée au waacking et à ses héritages culturels et politiques.
+À la croisée de la danse, de la performance et des arts visuels, l’association développe des formats contemporains qui relient scènes underground et contextes artistiques actuels.
+Son travail s’inscrit dans une dynamique de transmission, de visibilité et de création collective, en valorisant des pratiques, des corps et des récits souvent invisibilisés.
+GINO’S II s’engage à créer des espaces sûrs et inclusifs, où la créativité devient un outil d’émancipation, de représentation et de transformation sociale.
+
+  
           </p>
           <p className="mt-5 text-sm text-white/60">
             SIRET 990 923 252 00011 • RNA W751280385
